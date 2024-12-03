@@ -18,10 +18,10 @@ class BankAccount(
         if (amount <= balance){
             // We can withdraw
             balance -= amount
-            transactionHistory.add("$accountHolder withdrew R$amount.\nNew balance: R$balance.")
+            transactionHistory.add("$accountHolder withdrew R$amount.\nNew balance: R${acctBalance()}.")
         } else {
             // We can't withdraw the money
-            println("Insufficient funds to withdraw R$amount.")
+            println("Insufficient funds to withdraw R$amount. Account balance: ${acctBalance()}")
         }
 
     }
@@ -32,10 +32,8 @@ class BankAccount(
         for (transaction in transactionHistory) {
             println(transaction)
         }
-        println("____________________________________________\nBalance:\n$balance")
 
-
-
+        println("\n$accountHolder's account balance: R${acctBalance()}")
 
         /* With index:
         if (transactionHistory.size > 0){
@@ -45,5 +43,9 @@ class BankAccount(
         } else
             println("No Transaction history.")
          */
+    }
+
+    fun acctBalance(): Double{
+        return balance
     }
 }
